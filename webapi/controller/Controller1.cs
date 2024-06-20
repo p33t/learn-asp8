@@ -1,11 +1,14 @@
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MyApp.Namespace
+namespace webapi.controller;
+
+[Route("api/[controller]")]
+[ApiController]
+public class Controller1 : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class Controller1 : ControllerBase
+    [HttpGet("hello")]
+    public Task<ActionResult<string>> Hello()
     {
+        return Task.FromResult<ActionResult<string>>(Ok("World"));
     }
 }
