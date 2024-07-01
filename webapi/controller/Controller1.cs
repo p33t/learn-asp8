@@ -10,6 +10,9 @@ namespace webapi.controller;
 [ApiController]
 public class Controller1 : ControllerBase
 {
+    /// <summary>
+    /// Some XML Docs (these need &lt;summary&gt; tag to land in Swagger)
+    /// </summary>
     [HttpGet("hello")]
     public Task<ActionResult<string>> Hello([FromQuery] HelloParam parameter)
     {
