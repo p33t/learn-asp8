@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace webapi.controller;
 
+/// <summary>This is a test controller </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class Controller1 : ControllerBase

@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen(options =>
     // Include XML Docs in Swagger UI 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    options.IncludeXmlComments(xmlPath);
+    options.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
 });builder.Services.AddControllers();
 
 
