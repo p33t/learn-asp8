@@ -19,6 +19,7 @@ public class Controller1 : ControllerBase
         return Task.FromResult<ActionResult<string>>(Ok("World"));
     }
 
+    /// These comments that don't have "summary" tag do not appear
     [HttpGet("getObj")]
     public Task<ActionResult<HelloParam>> GetObj()
     {
