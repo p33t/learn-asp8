@@ -1,5 +1,7 @@
 using System.Reflection;
+using System.Xml.XPath;
 using Microsoft.OpenApi.Models;
+using webapi;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,8 +20,11 @@ builder.Services.AddSwaggerGen(options =>
     // Include XML Docs in Swagger UI 
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    options.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
-});builder.Services.AddControllers();
+    XPathDocument CustomizeDocs() => ProgramHelper.InsertSummaryTags(xmlPath);
+    options.IncludeXmlComments(CustomizeDocs, includeControllerXmlComments: true);
+});
+
+builder.Services.AddControllers();
 
 
 var app = builder.Build();
@@ -60,3 +65,5 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
+
+

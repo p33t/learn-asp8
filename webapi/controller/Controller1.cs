@@ -19,7 +19,7 @@ public class Controller1 : ControllerBase
         return Task.FromResult<ActionResult<string>>(Ok("World"));
     }
 
-    /// These comments that don't have "summary" tag do not appear
+    /// These comments that don't have "summary" tag now appears because of custom processing. And it has extra markup <see cref="Controller1"/>.
     [HttpGet("getObj")]
     public Task<ActionResult<HelloParam>> GetObj()
     {
